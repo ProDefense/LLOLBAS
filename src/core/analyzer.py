@@ -133,30 +133,3 @@ class Analyzer:
         # Print out all the tables
         for tbl in tables:
             console.print(tbl)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
