@@ -37,7 +37,7 @@ This script has the following parameters which can be modified:
 Then once the output file is downloaded back to the attacking machine, you can
 digest the file with digestLOL.py like so:
 ```bash
-python3 ./outfile.lol -l ./path/to/LOLBAS-repo
+python3 ./digestLOL.py outfile.lol -l ./path/to/LOLBAS-repo
 ```
 
 ### Disclaimer
