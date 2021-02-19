@@ -1,6 +1,6 @@
 <#
     LOLABS Powershell Script
-    Author: BishopFox
+    Author: Bishop Fox
     Description:
         Digest script for ingestor program on host
 #>
