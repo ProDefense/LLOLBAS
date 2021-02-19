@@ -1,0 +1,3 @@
+[submodule "src/LOLBAS"]
+	path = src/LOLBAS
+	url = https://github.com/LOLBAS-Project/LOLBAS
