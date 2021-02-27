@@ -1,0 +1,5 @@
+---
+lineage:
+  skeleton:
+    remote-url: https://github.com/MattKeeley/LOLBAS.git
+version: "1"

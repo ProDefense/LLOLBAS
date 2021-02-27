@@ -1,53 +1,40 @@
-# LOBAS
+# LOLBAS
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](#) 
-[![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](#) 
-[![forthebadge](https://forthebadge.com/images/badges/it-works-why.svg)](#)
+[![GitHub Build Status](https://github.com/MattKeeley/LOLBAS/workflows/build/badge.svg)](https://github.com/MattKeeley/LOLBAS/actions)
+[![Coverage Status](https://coveralls.io/repos/github/MattKeeley/LOLBAS/badge.svg?branch=develop)](https://coveralls.io/github/MattKeeley/LOLBAS?branch=develop)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/MattKeeley/LOLBAS.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/MattKeeley/LOLBAS/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/MattKeeley/LOLBAS.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/MattKeeley/LOLBAS/context:python)
+[![Known Vulnerabilities](https://snyk.io/test/github/MattKeeley/LOLBAS/develop/badge.svg)](https://snyk.io/test/github/MattKeeley/LOLBAS)
 
-This is a Python program which is created to help digest information from a
-Windows system and compare it against the database known as
-[LOLBAS](https://lolbas-project.github.io). With a given digestor (the
-powershell one is in this repo), download the base64 encoded JSON created by the
-digestor and ingest it using the Python program digestLOL.py. The goal is to
-help an operator, pentester, or general security analyst realize potential
-executables or scripts which could be exploited to bypass system security
-restrictions. These binaries can be abused to break out of restricted shells,
-escalate privileges, transfer files, spawn bind and reverse shells, etc...
+This is a generic skeleton project that can be used to quickly get a
+new [MattKeeley](https://github.com/MattKeeley) Python library GitHub
+project started. This skeleton project contains [licensing
+information](LICENSE), as well as
+[pre-commit hooks](https://pre-commit.com) and
+[GitHub Actions](https://github.com/features/actions) configurations
+appropriate for a Python library project.
 
-The credit for all the LOLBAS content goes to the
-[LOLBAS-Project](https://github.com/LOLBAS-Project).
+## New Repositories from a Skeleton
 
-## Download
+Please see our [Project Setup guide](https://github.com/MattKeeley/development-guide/tree/develop/project_setup)
+for step-by-step instructions on how to start a new repository from
+a skeleton. This will save you time and effort when configuring a
+new repository!
 
-```
-git clone https://github.com/MattKeeley/LOBAS
-```
+## Contributing
 
-## Run
-On the target machine, run the included Powershell script like so:
-```powershell
-Powershell.exe .\powerlolbas.ps1
-```
-This script has the following parameters which can be modified:
-```
-- OUTPUT to stdout.
-- CWD can be changed to a desired dir.
-- OUTFILE can be changed to desired output name.
-```
-Then once the output file is downloaded back to the attacking machine, you can
-digest the file with digestLOL.py like so:
-```bash
-python3 ./digestLOL.py outfile.lol -l ./path/to/LOLBAS-repo
-```
-
-### Disclaimer
-
-> This tool is only for testing and academic purposes and can only be used where 
-> strict consent has been given. Do not use it for illegal purposes! It is the 
-> end user’s responsibility to obey all applicable local, state and federal laws. 
-> Developers assume no liability and are not responsible for any misuse or damage 
-> caused by this tool and software.
+We welcome contributions! Please see [`CONTRIBUTING.md`](CONTRIBUTING.md) for
+details.
 
 ## License
 
-This project is licensed under the GPLv3 License - see the [LICENSE](LICENSE) file for details
+This project is in the worldwide [public domain](LICENSE).
+
+This project is in the public domain within the United States, and
+copyright and related rights in the work worldwide are waived through
+the [CC0 1.0 Universal public domain
+dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+
+All contributions to this project will be released under the CC0
+dedication. By submitting a pull request, you are agreeing to comply
+with this waiver of copyright interest.

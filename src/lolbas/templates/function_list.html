@@ -1,0 +1,7 @@
+<ul class="function-list">
+  {% set catergors = variate.Commands | groupby("Category") %} {% set sc = [] %}
+  {% for cats in catergors if (cats[0] | lower) not in sc%} {% set type =
+  cats[0] | lower %}
+  <li>{{ func[type] }}</li>
+  {% do sc.append(type) %} {% endfor %}
+</ul>
