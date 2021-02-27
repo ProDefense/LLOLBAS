@@ -19,6 +19,7 @@ from glob import glob
 from yaml import safe_load
 from rich.table import Table
 from rich.console import Console
+import cherrypy
 
 
 class Analyzer:
@@ -40,10 +41,11 @@ class Analyzer:
 
         # Get all YML files
         # Credit: https://stackoverflow.com/questions/18394147/recursive-sub-folder-search-and-return-files-in-a-list-python
-        self.ymlfiles = [y for x in os.walk(self.lolabs) for y in glob(os.path.join(x[0], '*.yml'))]
+        self.ymlfiles = [y for x in os.walk(self.lolabs) for y in glob(os.path.join(x[0], '*.md'))]
 
         # Trying to be nice to ram so we wont load ALL the yml into memory
         self.findings: list = []
+        self.yml_find: list = []
 
     def run(self) -> None:
         """Begin the analysis using content loaded in __init__."""
@@ -71,12 +73,18 @@ class Analyzer:
                 if loaded['Name'] not in seen_names:
                     found.append(loaded)
                     seen_names.append(loaded['Name'])
+                    self.yml_find.append(yml)
 
         # Store the findings
         self.findings: list = found
 
     def pretty_print(self, mode: str = "basic") -> None:
-        """Pretty print out our found results."""
+        print(f"FOUND {len(self.findings)} FILES")
+
+
+"""
+# Commenting this out. Currently the export feature needs some work.
+    def pretty_print(self, mode: str = "basic") -> None:
         '''
         - Show header: To display some name
         - Show lines:  Allow a line between each item in table
@@ -133,3 +141,4 @@ class Analyzer:
         # Print out all the tables
         for tbl in tables:
             console.print(tbl)
+"""

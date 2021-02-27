@@ -1,0 +1,15 @@
+<ul class="function-list">
+    {% for item in bin %}
+        {% if ".".join(name.lower().split(".")[:-1]) == ".".join(item.Name.lower().split(".")[:-1]) %}
+            {% set catergors = item.Commands | groupby("Category") %}
+            {% set sc = [] %}
+            {% for cats in catergors if (cats[0] | lower) not in sc%}
+                {% set type = cats[0] | lower %}
+                <li>{{ func[type] }}</li>
+                {% do sc.append(type) %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</ul>
+
+	

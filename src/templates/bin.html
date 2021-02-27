@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>{{ page.Name }}</h1>
+<br>
+<p><b>Paths:</b> 
+	<ul style="list-style-type:none">
+	{% for ent in page.Full_Path %}
+	<li>{{ent.Path}}</li>
+	{% endfor %} 
+	</ul>
+</p>
+<br>
+<b>Resources:</b> 	
+<br>
+	{% for ent in page.Resources %}
+	<a href="{{ent.Link}}">{{ent.Link}}</a>
+	<br>
+	{% endfor %} 
+<br>
+<p><b>Acknowledgement:</b> 
+<br>
+	{% for pers in page.Acknowledgement %}
+    {% set handle = pers.Handle | string() %}
+    {% if handle != 'None' %}
+	    {{pers.Person}} - <a href="https://twitter.com/{{handle.replace('AT_SYMBOL','@')}}">{{handle.replace('AT_SYMBOL','@')}}</a>
+    {% else %}
+        {{pers.Person}}
+    {% endif %}
+	<br>
+	{% endfor %} 
+</p>
+<br>
+<p><b>Detection:</b>
+<br>
+	{% for ioc in page.Detection %}
+	{{ioc.IOC}}
+	<br>
+	{% endfor %} 
+</p>
+<br>
+
+{% set test = page.Commands | groupby("Category") %}
+{% for Command in test%}
+	{% set function_name = Command[0]  %}
+<h2 id="{{function_name}}" class ="function-name">
+    {{ function_name }}
+</h2>
+	{% for item in Command[1] %}
+		Description: {{item.Description.replace('AT_SYMBOL','@')}}
+		<br>
+		<pre><code>{{item.Command.replace('AT_SYMBOL','@')}}</code></pre>
+		Usecase:{{item.Usecase.replace('AT_SYMBOL','@')}}
+		<br>
+		Privileges required:{{item.Privileges.replace('AT_SYMBOL','@')}}
+		<br>
+		OS:{{item.OperatingSystem.replace('AT_SYMBOL','@')}}
+		<br>
+		Mitre:<a href="{{item.MitreLink.replace('AT_SYMBOL','@')}}">{{item.MitreID.replace('AT_SYMBOL','@')}}</a>
+		<br>
+		<br>
+	{% endfor %}
+{% endfor %}
+{% endblock content %}
