@@ -48,19 +48,12 @@ def parse_n_serve(output):
     app.jinja_options["extensions"].append("jinja2.ext.do")
 
     # Attribute needed for jinja template usages
-    # loc = a.lolabs + "/"
-    # print(f"LOCATION: {loc}")
     findings = a.findings
-    # print(f"DATA: {data}")
-    # ymlfiles = a.yml_find
-    # print(f"YML FILES: {ymlfiles}")
 
     @app.route("/")
     @app.route("/home")
     def home():
-        return render_template(
-            "bin_table.html", data=findings, func=functions
-        )  # files=ymlfiles, bin=data, location=loc, count=len(data), func=functions)
+        return render_template("bin_table.html", data=findings, func=functions)
 
     @app.route("/about")
     def about():
@@ -106,7 +99,9 @@ def main() -> int:
         # Exit because one or more of the args was invalid
         print(err, file=sys.stderr)
         return 1
-    return 0
 
     # Time to parse and serve
     parse_n_serve(validated_args["<file>"])
+
+    # Return success after ending
+    return 0
