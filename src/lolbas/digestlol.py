@@ -12,7 +12,7 @@ EXIT STATUS
     >0  An error occurred.
 
 Usage:
-  digestLOL <file> [options]
+  digestLOL <file>
   digestLOL (-h | --help)
 
 Options:
