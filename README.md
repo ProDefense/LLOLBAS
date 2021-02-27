@@ -94,9 +94,11 @@ Once the digester is ran, we see the output from flask shown like so:
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-Browsing to the website you are met with the following screen:
+Browsing to the website you are met with the following screen: <br>
+<img src="/resources/images/landing.png" alt="landing.png" style="zoom:25%;" />
 
-Clicking on an application you find will look like the following:
+Clicking on an application you find will look like the following: <br>
+<img src="/resources/images/application.png" alt="application.png" style="zoom:25%;" />
 
 ## Disclaimer
 
