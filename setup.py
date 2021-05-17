@@ -92,7 +92,7 @@ setup(
         "schema",
         "setuptools >= 24.2.0",
         "pyyaml==5.4.1",
-        "flask==1.1.2",
+        "flask==2.0.0",
     ],
     extras_require={
         "test": [
