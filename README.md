@@ -1,4 +1,4 @@
-# LOLBAS
+# LLOLBAS (Local LOLBAS)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 [![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thewholesomedish.com%2Fspaghetti%2F&psig=AOvVaw3OneeN_AB3XxZzgCPPTtfv&ust=1614550372646000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJjQwf2Ki-8CFQAAAAAdAAAAABAD)
@@ -6,17 +6,17 @@
 
 [![GitHub Build Status](https://github.com/MattKeeley/LOBAS/workflows/build/badge.svg)](https://github.com/MattKeeley/LOBAS/actions)
 
-`LOBAS` is a repo containing injestors and a parser which in conjunction with
+`LLOLBAS` is a repo containing injestors and a parser which in conjunction with
 one another will allow for indexing of all potential binaries, scripts, and
 libraries which exist on target Windows system. These findings can then be cross
 referenced with the intent of the user; whether the intent is to execute
 commands, download files, or even upload files, this tool will help you find
-the right file to do so! This was inspired by [LOLBAS](https://lolbas-project.github.io).
+the right file to do so! This was inspired by [LLOLBAS](https://lolbas-project.github.io).
 
-`LOBAS` is a local implementation of the popular LOLBAS (Living off the Land
-with Binaries and Scripts). The idea is to allow a user to use LOLBAS locally
+`LLOLBAS` is a local implementation of the popular LOLBAS (Living off the Land
+with Binaries and Scripts). The idea is to allow a user to use LLOLBAS locally
 and with a curated list of applications from what files exist on a target
-system. The program then will host this local instance of LOLBAS locally using
+system. The program then will host this local instance of LLOLBAS locally using
 flask to allow further inspection of each file the program saw.
 
 ## Getting Started
