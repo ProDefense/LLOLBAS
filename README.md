@@ -4,7 +4,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thewholesomedish.com%2Fspaghetti%2F&psig=AOvVaw3OneeN_AB3XxZzgCPPTtfv&ust=1614550372646000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJjQwf2Ki-8CFQAAAAAdAAAAABAD)
 [![forthebadge](https://forthebadge.com/images/badges/it-works-why.svg)](https://www.youtube.com/watch?v=kyti25ol438)
 
-[![GitHub Build Status](https://github.com/MattKeeley/LOBAS/workflows/build/badge.svg)](https://github.com/MattKeeley/LOBAS/actions)
+[![GitHub Build Status](https://github.com/MattKeeley/LLOLBAS/workflows/build/badge.svg)](https://github.com/MattKeeley/LLOLBAS/actions)
 
 `LLOLBAS` is a repo containing injestors and a parser which in conjunction with
 one another will allow for indexing of all potential binaries, scripts, and
@@ -21,24 +21,24 @@ flask to allow further inspection of each file the program saw.
 
 ## Getting Started
 
-`LOBAS` requires **Python 3.6+**. Python 2 is not supported.
+`LLOLBAS` requires **Python 3.6+**. Python 2 is not supported.
 
-`LOBAS` can be installed as a module using `pip` and the requirements.txt file
+`LLOLBAS` can be installed as a module using `pip` and the requirements.txt file
 in the repository or by directly calling upon the git repo using the git
 modifier for pip.
 
 ### Installed as a Module
 
-`LOBAS` Using pip and requirements.txt
+`LLOLBAS` Using pip and requirements.txt
 
 ```console
 pip install --requirement requirements.txt
 ```
 
-`LOBAS` Using pip and git url
+`LLOLBAS` Using pip and git url
 
 ```console
-pip install git+https://github.com/MattKeeley/LOBAS.git
+pip install git+https://github.com/MattKeeley/LLOLBAS.git
 ```
 
 The digester can then be ran directly
