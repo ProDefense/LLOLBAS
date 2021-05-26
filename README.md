@@ -11,12 +11,12 @@ one another will allow for indexing of all potential binaries, scripts, and
 libraries which exist on target Windows system. These findings can then be cross
 referenced with the intent of the user; whether the intent is to execute
 commands, download files, or even upload files, this tool will help you find
-the right file to do so! This was inspired by [LLOLBAS](https://lolbas-project.github.io).
+the right file to do so! This was inspired by [LOLBAS](https://lolbas-project.github.io).
 
 `LLOLBAS` is a local implementation of the popular LOLBAS (Living off the Land
 with Binaries and Scripts). The idea is to allow a user to use LLOLBAS locally
 and with a curated list of applications from what files exist on a target
-system. The program then will host this local instance of LLOLBAS locally using
+system. The program then will host this local instance of LOLBAS locally using
 flask to allow further inspection of each file the program saw.
 
 ## Getting Started
@@ -38,7 +38,7 @@ pip install --requirement requirements.txt
 `LLOLBAS` Using pip and git url
 
 ```console
-pip install git+https://github.com/MattKeeley/LLOLBAS.git
+pip install git+https://github.com/AZSURGE/LLOLBAS.git
 ```
 
 The digester can then be ran directly
@@ -51,10 +51,10 @@ digestlol output.lol
 ### Standalone Usage and Examples
 
 ```console
-digestLOL is a digestor for any ingestor for LOLABS.
+digestLOL is a digestor for any ingestor for LLOLABS.
 
 digestLOL is designed to allow any user who uses one of the
-ingestors for LOLABS to bring in the base64 encoded JSON and
+ingestors for LLOLABS to bring in the base64 encoded JSON and
 digest it into this here program. The expected output is
 potential vectors of attack for Windows Systems.
 
@@ -86,7 +86,7 @@ large base64 encoded JSON formatted string.
 Once the digester is ran, we see the output from flask shown like so:
 
 ```console
- * Serving Flask app "lolbas.digestlol" (lazy loading)
+ * Serving Flask app "llolbas.digestlol" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
