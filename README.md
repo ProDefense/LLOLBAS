@@ -4,7 +4,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thewholesomedish.com%2Fspaghetti%2F&psig=AOvVaw3OneeN_AB3XxZzgCPPTtfv&ust=1614550372646000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJjQwf2Ki-8CFQAAAAAdAAAAABAD)
 [![forthebadge](https://forthebadge.com/images/badges/it-works-why.svg)](https://www.youtube.com/watch?v=kyti25ol438)
 
-[![GitHub Build Status](https://github.com/MattKeeley/LLOLBAS/workflows/build/badge.svg)](https://github.com/MattKeeley/LLOLBAS/actions)
+[![GitHub Build Status](https://github.com/AZSERG/LLOLBAS/workflows/build/badge.svg)](https://github.com/AZSERG/LLOLBAS/actions)
 
 `llolbas` is a repo containing a localized and off-line version of the ever
 popular Living Off the Land Binaries and Scripts
