@@ -44,21 +44,21 @@ def get_version(version_file):
 setup(
     name="lolbas",
     # Versions should comply with PEP440
-    version=get_version("src/lolbas/_version.py"),
-    description="LOLBAS python library for parsing Widnows capabilities.",
+    version=get_version("src/llolbas/_version.py"),
+    description="Local instance of Living Off the Land Binaries And Scripts.",
     long_description=readme(),
     long_description_content_type="text/markdown",
     # Landing page for project
-    url="https://github.com/MattKeeley/LOBAS",
+    url="https://github.com/AZSERG/LLOLBAS",
     # Additional URLs for this project per
     # https://packaging.python.org/guides/distributing-packages-using-setuptools/#project-urls
     project_urls={
-        "Source": "https://github.com/MattKeeley/LOBAS",
-        "Tracker": "https://github.com/MattKeeley/LOBAS/issues",
+        "Source": "https://github.com/AZSERG/LLOLBAS",
+        "Tracker": "https://github.com/AZSERG/LLOLBAS/issues",
     },
     # Author details
     author="Pascal0x90 and Nightbane",
-    author_email="email_here@email.com",
+    author_email="35417308+Pascal-0x90@users.noreply.github.com",
     license="License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -66,9 +66,9 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         # Indicate who your project is intended for
-        "Intended Audience :: Developers",
+        "Intended Audience :: Security Researchers",
         # Pick your license as you wish (should match "license" above)
         "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
         # Specify the Python versions you support here. In particular, ensure
@@ -81,7 +81,7 @@ setup(
     ],
     python_requires=">=3.6",
     # What does your project relate to?
-    keywords="skeleton",
+    keywords="post-exploitation, enumeration, LOLBAS, Windows",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     package_data={"": [""]},
@@ -92,7 +92,7 @@ setup(
         "schema",
         "setuptools >= 24.2.0",
         "pyyaml==5.4.1",
-        "flask==1.1.2",
+        "flask==2.0.1",
     ],
     extras_require={
         "test": [
@@ -109,6 +109,6 @@ setup(
             "pytest",
         ]
     },
-    # Conveniently allows one to run the CLI tool as `digestlol`
-    entry_points={"console_scripts": ["digestlol = lolbas.digestlol:main"]},
+    # Conveniently allows one to run the CLI tool as `llolbas`
+    entry_points={"console_scripts": ["llolbas = llolbas.llolbas:main"]},
 )
