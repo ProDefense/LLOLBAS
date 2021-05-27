@@ -1,10 +1,12 @@
 #!/usr/bin/env python
-"""digestLOL is a digestor for any ingestor for LOLABS.
+"""llolbas is a local server and digester for LOLBAS.
 
-digestLOL is designed to allow any user who uses one of the
-ingestors for LOLABS to bring in the base64 encoded JSON and
-digest it into this here program. The expected output is
-potential vectors of attack for Windows Systems.
+llolbas is a command line program which allows a user
+to not only run a local instance of the hit internet
+resource LOLBAS, but also be able to digest output
+from the included ingestor to allow for curated listing
+of binaries which exist within a target Windows
+computer.
 
 EXIT STATUS
     This utility exits with one of the following values:
@@ -12,11 +14,19 @@ EXIT STATUS
     >0  An error occurred.
 
 Usage:
-  digestLOL <file>
-  digestLOL (-h | --help)
+  llolbas serve [options]
+  llolbas serve (-p PORT | --port=PORT)
+  llolbas serve (-d FILE | --digest=FILE)
+  llolbas (-h | --help)
 
 Options:
     -h --help                   Show this message.
+    -d FILE --digest=FILE       If specified, use file
+                                from one of the ingestors to
+                                curate the LOLBAS served
+                                output.
+    -p PORT --port=PORT         Specify the port to start
+                                the flask server on. [default: 5000].
 """
 
 # Standard Python Libraries
@@ -27,24 +37,28 @@ from typing import Any, Dict
 # Third-Party Libraries
 import docopt
 from flask import Flask, render_template
-from schema import And, Or, Schema, SchemaError
+from schema import And, Or, Schema, Use, SchemaError
 
 from ._version import __version__
 
 # Internal Libraries
 from .core import Analyzer, functions
 
+# Debug, if you're cool
 DEBUG = False
 
-
-def parse_n_serve(output):
+def run_server(digt: str, port: int = 5000):
     """Serve up the findings on a static website."""
     app = Flask(__name__)
 
-    a = Analyzer(output)
+    # Run analyzer on digest. If digest is none,
+    # then the known binaries will be all of those
+    # known by LOLBAS. 
+    a = Analyzer(digt)
     a.run()
 
     # Including this so I can do a loop in functions ( function_list.html:9 )
+    app.jinja_options["extensions"] = []
     app.jinja_options["extensions"].append("jinja2.ext.do")
 
     # Attribute needed for jinja template usages
@@ -59,6 +73,7 @@ def parse_n_serve(output):
     def about():
         return render_template("about.html", title="About")
 
+    # Be quirky and use the name of binary as page name.
     @app.route("/<command>")
     def cmd(command):
         # Run through the yml file and check names then serve that one
@@ -71,7 +86,7 @@ def parse_n_serve(output):
                     page = p
         return render_template("bin.html", page=page, cmd=command)
 
-    app.run(debug=DEBUG)
+    app.run(debug=DEBUG, port=port)
 
 
 def main() -> int:
@@ -82,12 +97,20 @@ def main() -> int:
     # Validate and convert args as needed with schema
     schema: Schema = Schema(
         {
-            "<file>": Or(
+            "--port": Or(
+                None,
+                And(
+                    Use(int),
+                    lambda p: 1 < p < 65535,
+                    error='Port specified must be between 1 and 65535.',
+                )
+            ),
+            "--digest": Or(
                 None,
                 And(
                     str,
                     lambda filename: os.path.isfile(filename),
-                    error=f"Input file: {str(args['<file>'])} does not exist!",
+                    error=f'Input file {str(args["--digest"])} does not exist!'
                 ),
             ),
             str: object,  # Dont care about other keys if any
@@ -100,8 +123,16 @@ def main() -> int:
         print(err, file=sys.stderr)
         return 1
 
+    # Set local parameters
+    PORT = validated_args['--port']
+    DIGT = validated_args['--digest']
+
     # Time to parse and serve
-    parse_n_serve(validated_args["<file>"])
+    run_server(DIGT, PORT)
 
     # Return success after ending
+    '''
+    Realistically we probably will never reach
+    here because of how Flask works
+    '''
     return 0

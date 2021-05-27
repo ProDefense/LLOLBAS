@@ -44,7 +44,7 @@ def get_version(version_file):
 setup(
     name="lolbas",
     # Versions should comply with PEP440
-    version=get_version("src/lolbas/_version.py"),
+    version=get_version("src/llolbas/_version.py"),
     description="Local instance of Living Off the Land Binaries And Scripts.",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -81,7 +81,7 @@ setup(
     ],
     python_requires=">=3.6",
     # What does your project relate to?
-    keywords="skeleton",
+    keywords="post-exploitation, enumeration, LOLBAS, Windows",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     package_data={"": [""]},
@@ -109,6 +109,6 @@ setup(
             "pytest",
         ]
     },
-    # Conveniently allows one to run the CLI tool as `digestlol`
-    entry_points={"console_scripts": ["digestlol = lolbas.digestlol:main"]},
+    # Conveniently allows one to run the CLI tool as `llolbas`
+    entry_points={"console_scripts": ["llolbas = llolbas.llolbas:main"]},
 )

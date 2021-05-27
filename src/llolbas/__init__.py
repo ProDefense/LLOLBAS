@@ -5,6 +5,6 @@
 # Python package.
 from ._version import __version__  # noqa: F401
 from .core import Analyzer, functions, refs
-from .digestlol import main, parse_n_serve
+from .llolbas import main, run_server
 
-__all__ = ["main", "parse_n_serve", "Analyzer", "refs", "functions"]
+__all__ = ["main", "run_server", "Analyzer", "refs", "functions"]
