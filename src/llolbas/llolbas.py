@@ -37,7 +37,7 @@ from typing import Any, Dict
 # Third-Party Libraries
 import docopt
 from flask import Flask, render_template
-from schema import And, Or, Schema, Use, SchemaError
+from schema import And, Or, Schema, SchemaError, Use
 
 from ._version import __version__
 
@@ -47,13 +47,14 @@ from .core import Analyzer, functions
 # Debug, if you're cool
 DEBUG = False
 
+
 def run_server(digt: str, port: int = 5000):
     """Serve up the findings on a static website."""
     app = Flask(__name__)
 
     # Run analyzer on digest. If digest is none,
     # then the known binaries will be all of those
-    # known by LOLBAS. 
+    # known by LOLBAS.
     a = Analyzer(digt)
     a.run()
 
@@ -102,15 +103,15 @@ def main() -> int:
                 And(
                     Use(int),
                     lambda p: 1 < p < 65535,
-                    error='Port specified must be between 1 and 65535.',
-                )
+                    error="Port specified must be between 1 and 65535.",
+                ),
             ),
             "--digest": Or(
                 None,
                 And(
                     str,
                     lambda filename: os.path.isfile(filename),
-                    error=f'Input file {str(args["--digest"])} does not exist!'
+                    error=f'Input file {str(args["--digest"])} does not exist!',
                 ),
             ),
             str: object,  # Dont care about other keys if any
@@ -124,15 +125,15 @@ def main() -> int:
         return 1
 
     # Set local parameters
-    PORT = validated_args['--port']
-    DIGT = validated_args['--digest']
+    PORT = validated_args["--port"]
+    DIGT = validated_args["--digest"]
 
     # Time to parse and serve
     run_server(DIGT, PORT)
 
     # Return success after ending
-    '''
+    """
     Realistically we probably will never reach
     here because of how Flask works
-    '''
+    """
     return 0

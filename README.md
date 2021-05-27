@@ -6,57 +6,93 @@
 
 [![GitHub Build Status](https://github.com/MattKeeley/LLOLBAS/workflows/build/badge.svg)](https://github.com/MattKeeley/LLOLBAS/actions)
 
-`LLOLBAS` is a repo containing injestors and a parser which in conjunction with
-one another will allow for indexing of all potential binaries, scripts, and
-libraries which exist on target Windows system. These findings can then be cross
-referenced with the intent of the user; whether the intent is to execute
-commands, download files, or even upload files, this tool will help you find
-the right file to do so! This was inspired by [LOLBAS](https://lolbas-project.github.io).
+`llolbas` is a repo containing a localized and off-line version of the ever
+popular Living Off the Land Binaries and Scripts
+([LOLBAS](https://lolbas-project.github.io)) project.
 
-`LLOLBAS` is a local implementation of the popular LOLBAS (Living off the Land
-with Binaries and Scripts). The idea is to allow a user to use LLOLBAS locally
-and with a curated list of applications from what files exist on a target
-system. The program then will host this local instance of LOLBAS locally using
-flask to allow further inspection of each file the program saw.
+## Why?
+
+We noticed two problems when using tooling such as GTFO bins and LOLBAS:
+
+1. They are online
+2. They have every binary imaginable.
+
+For point 1, this becomes an issue for engagements where a red-teamer or
+penetration tester may not have access to the outside world. Alternatively,
+the domain for LOLBAS may be blocked, detected, or just otherwise down.
+
+In point 2, we see while it is nice to have an entire listing of every binary
+which could be used to download, upload, execute, or what have you, in the
+enumeration phase, you really only care about what accomplishes your goal.
+For this reason, we built in functionality to allow for curating of the entries
+in the LOLBAS database based on what binaries actually exist on your target
+machine. Nothing too crazy, but damn if it ain't helpful.
+
+**Disclaimer:** Some of the code/scripts/script examples will still need to
+be called for. This is something we are looking to integrate later on.
+
+## How?
+
+Using the power of one of our included ingestors, you can throw one of those
+bad boys on a target server and download the outputted base64 encoded JSON
+file. Using the instructions below, you can then start up your Local LOLBAS
+instance and begin browsing away while not on the target.
+
+**Note:** The digestor will begin a Flask server on a local port of choosing
+or default 5000.
+
+## Where?
+
+Currently we are only hosting the project on GitHub however, there is talk
+to make this a pypi/pip package through one of the pip repositories. Since
+all the assets are primarily in a huge dictionary, there is no tossing around
+dependencies and downloading from other repositories.
 
 ## Getting Started
 
-`LLOLBAS` requires **Python 3.6+**. Python 2 is not supported.
+`llolbas` requires **Python 3.6+**. Python 2 is not supported.
 
-`LLOLBAS` can be installed as a module using `pip` and the requirements.txt file
+`llolbas` can be installed as a module using `pip` and the requirements.txt file
 in the repository or by directly calling upon the git repo using the git
 modifier for pip.
 
-### Installed as a Module
+### Installing Via Repo
 
-`LLOLBAS` Using pip and requirements.txt
+First Git clone the repository:
 
 ```console
-pip install --requirement requirements.txt
+git clone https://github.com/AZSERG/LLOLBAS.git
 ```
 
-`LLOLBAS` Using pip and git url
+For users not planning on doing development work, just use the basic
+requirements.txt:
+
+```console
+pip install --requirement ./requirements.txt
+```
+
+### Installing Via Git + pip
+
+In one simple step, you can use pip to pull and install a GitHub
+repository:
 
 ```console
 pip install git+https://github.com/AZSURGE/LLOLBAS.git
 ```
 
-The digester can then be ran directly
+### Usage and Examples
+
+`llolbas` can then be ran directly via the command line like so:
 
 ```console
-digestlol -h
-digestlol output.lol
-```
+llolbas is a local server and digester for LOLBAS.
 
-### Standalone Usage and Examples
-
-```console
-digestLOL is a digestor for any ingestor for LLOLABS.
-
-digestLOL is designed to allow any user who uses one of the
-ingestors for LLOLABS to bring in the base64 encoded JSON and
-digest it into this here program. The expected output is
-potential vectors of attack for Windows Systems.
+llolbas is a command line program which allows a user
+to not only run a local instance of the hit internet
+resource LOLBAS, but also be able to digest output
+from the included ingestor to allow for curated listing
+of binaries which exist within a target Windows
+computer.
 
 EXIT STATUS
     This utility exits with one of the following values:
@@ -64,29 +100,34 @@ EXIT STATUS
     >0  An error occurred.
 
 Usage:
-  digestLOL <file>
-  digestLOL (-h | --help)
-
-Options:
-    -h --help                   Show this message.
+  llolbas serve [options]
+  llolbas serve (-p PORT | --port=PORT)
+  llolbas serve (-d FILE | --digest=FILE)
+  llolbas (-h | --help)
 ```
 
 #### Options
 
 ```console
-<file>: This is the file which will be digested by the digester.
+    -h --help                   Show this message.
+    -d FILE --digest=FILE       If specified, use file
+                                from one of the ingestors to
+                                curate the LOLBAS served
+                                output.
+    -p PORT --port=PORT         Specify the port to start
+                                the flask server on. [default: 5000].
 ```
 
 #### Sample Output
 
 The ingestor scripts should have no output. Debug mode can be turned on however,
 if you wish to have some sort of verbosity. The output from these should be a
-large base64 encoded JSON formatted string.
+large base64 encoded JSON formatted string either written to a file or stdout.
 
-Once the digester is ran, we see the output from flask shown like so:
+Once `llolbas` is ran, we see the output from flask shown like so:
 
 ```console
- * Serving Flask app "llolbas.digestlol" (lazy loading)
+ * Serving Flask app "llolbas.llolbas" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
@@ -94,11 +135,13 @@ Once the digester is ran, we see the output from flask shown like so:
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-Browsing to the website you are met with the following screen: <br>
-<img src="/resources/images/landing.png" alt="landing.png" style="zoom:25%;" />
+Browsing to the website you are met with the following screen:
 
-Clicking on an application you find will look like the following: <br>
-<img src="/resources/images/application.png" alt="application.png" style="zoom:25%;" />
+![landing page](resources/images/landing.png)
+
+Clicking on an application you find will look like the following:
+
+![finding app](resources/images/application.png)
 
 ## Disclaimer
 
