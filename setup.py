@@ -91,7 +91,7 @@ setup(
         "docopt",
         "schema",
         "setuptools >= 24.2.0",
-        "pyyaml==5.4.1",
+        "pyyaml==6.0",
         "flask==2.0.1",
     ],
     extras_require={
